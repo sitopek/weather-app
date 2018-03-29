@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.taufiq.muhd.weatherapp.MainActivity"
+    android:background="#2196F3">
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_refresh"
+        android:layout_alignBottom="@+id/button_refresh"
+        android:layout_marginStart="18dp"
+        android:text="temp"
+        android:drawableLeft="@drawable/ic_temperature"
+        android:drawableRight="@drawable/ic_celcius"/>
+
+    <Button
+        android:id="@+id/button_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="14dp"
+        android:text="Refresh" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/temperature"
+        android:layout_alignTop="@+id/button_refresh"
+        android:text="KL" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_refresh"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"/>
+
+    <TextView
+        android:id="@+id/wind_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cloudiness"
+        android:layout_alignBottom="@+id/cloudiness"
+        android:layout_alignStart="@+id/icon"
+        android:layout_marginStart="17dp"
+        android:text="mps"
+        android:drawableLeft="@drawable/ic_humidity"/>
+
+    <TextView
+        android:id="@+id/cloudiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="cloudiness"
+        android:drawableLeft="@drawable/ic_cloudiness"/>
+
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cloudiness"
+        android:layout_alignBottom="@+id/cloudiness"
+        android:layout_marginStart="32dp"
+        android:layout_toEndOf="@+id/cloudiness"
+        android:text="humoidity"
+        android:drawableLeft="@drawable/ic_wind"/>
+
+    <TextView
+        android:id="@+id/footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:text="footer" />
+
+</RelativeLayout>
