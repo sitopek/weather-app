@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET,WEATHER_SOURCE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+            parse(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -191,62 +191,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-/*volley testing close*/
-    private class WeatherDataRetrival extends AsyncTask<Void, Void, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-
-            NetworkInfo networkInfo = ((ConnectivityManager)MainActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected()){
-                //network-connected
-                URL url = null;
-                try {
-                    url = new URL(WEATHER_SOURCE);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("GET");
-                    conn.setConnectTimeout(15000);
-                    conn.setReadTimeout(15000);
-                    conn.connect();
-
-                    //http respon code, exp: 404,200:success ect
-                    int responseCode = conn.getResponseCode();
-                    Log.d("check", "Response code=" + responseCode);
-                    if (responseCode == HttpURLConnection.HTTP_OK){
-                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                        if (bufferedReader != null){
-                            String readline;
-                            StringBuffer stringBuffer = new StringBuffer();
-                            while ((readline=bufferedReader.readLine()) != null){
-                                stringBuffer.append(readline);
-                            }
-                            Log.d("check", stringBuffer.toString());
-                            return stringBuffer.toString();
-                        }
-                    }
-                } catch (MalformedURLException | ProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            else {
-                //no connection
-                Log.d("check", "no connection");
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            parse(result);
-        }
-    }
 }
 
 
